@@ -17,7 +17,9 @@ def extractBillDate(text):
     return None  
 
 def extractTravelMode(text):
-    travel_patterns = []
+    travel_patterns = [
+        
+    ]
     for pattern in travel_patterns:
         match = re.search(pattern, text)
         if match:
@@ -42,7 +44,8 @@ def extractDestination(text):
 
 def extractDistance(text):
     distance_patterns = [
-        r'(\d+\.\d+)\s+kms'
+        r'\d+\.?\d*[\s\n]*km',
+        r'\d+\.?\d*[\s\n]*kilometers',
     ]
     for pattern in distance_patterns:
         match = re.search(pattern, text)
@@ -62,16 +65,18 @@ def extractTextFromPdf(fileName):
     pdfFileObj=open(fileName,'rb')
     pdfReader=PyPDF2.PdfReader(pdfFileObj)
     length=len(pdfReader.pages)
-    pageObj=pdfReader.pages[0]
-    return pageObj.extract_text()
+    text=[]
+    for i in range(0,length):
+       text.append(pdfReader.pages[i].extract_text())
+    return text
 
 if __name__ == "__main__":
-    text=extractTextFromPdf('OLA/OLA_1.pdf')
-    date=extractBillDate(text)
-    distance=extractDistance(text)    
+    text=extractTextFromPdf('UBER/UBER_1.pdf')
+    date=extractBillDate(text[0])
+    distance=extractDistance(text[0]+text[1])    
     travelMode=extractTravelMode(text)
     source=extractSource(text)
     Destination=extractDestination(text)
     amount=extractAmount(text)  
-    print(date)
+    print(distance)
  
