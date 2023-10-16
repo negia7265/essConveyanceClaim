@@ -17,7 +17,7 @@ const Background = styled.div`
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
-
+  opacity:0;
 `;
 
 const Shape = styled.div`
@@ -143,7 +143,7 @@ const Heading=styled.h1`
 export default function App() {
   return (
       <>
-      <Heading>ESS Self conveyance form</Heading>
+      <Heading>ESS CONVEYANCE</Heading>
       <GlassmorphismForm/>
       </>
   );
