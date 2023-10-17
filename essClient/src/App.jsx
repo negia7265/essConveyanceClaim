@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import React,{useState} from "react";
+import { FileUploader } from "react-drag-drop-files";
 
 const Global = styled.div`
   * {
@@ -97,7 +98,11 @@ const Label=styled.label`
   background-color: rgba(255, 255, 255, 0.07);
   color:white;
 `;
-
+const Text=styled.div`
+  background-color: rgba(255, 255, 255, 0.00);
+  color:orange;
+  font-size:15px;
+`;
 const options = [
   { value: 'Office To Home', label: 'Office To Home' },
   { value: 'Home To Office', label: 'Home To Office' },
@@ -107,6 +112,11 @@ const options = [
 import Dropdown from "./Dropdown";
 const GlassmorphismForm = () => {
   const [selected, setSelected] = useState("Office To Home");
+  const fileTypes=["PDF"]
+  const [file, setFile] = useState(null);
+  const handleChange = (file) => {
+    setFile(file);
+  };
   return (
     <Global>
       <Background>
@@ -126,6 +136,15 @@ const GlassmorphismForm = () => {
         <Input type="text" placeholder="" />
         <Label htmlFor="cost">Total Cost</Label>
         <Input type="number" placeholder="For ex. 30$"/>
+        <Label htmlFor="upload">Upload File Here...</Label>
+        <FileUploader
+        multiple={false}
+        handleChange={handleChange}
+        name="file"
+        types={fileTypes}
+        maxSize={5}
+        />
+       <Text>{file ? `File name: ${file.name}` : "no files uploaded yet"}</Text>
         <Button>Submit</Button>
       </Form>
     </Global>
