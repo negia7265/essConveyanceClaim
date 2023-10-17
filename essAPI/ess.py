@@ -14,7 +14,7 @@ def extractBillDate(text):
         match = re.search(pattern, text)
         if match:
             return match.group(0)
-    return None  
+    return ''
 
 def extractTravelMode(text):
     travel_patterns = [
@@ -24,17 +24,15 @@ def extractTravelMode(text):
         match = re.search(pattern, text)
         if match:
             return match.group(0)
-    return None  
+    return ''  
 
 def extractSource(text):
-    source_patterns = [
-       r'^(\w*\s*[\#\-\,\/\.\(\)\&]*)+',
-    ]
+    source_patterns = [  ]
     for pattern in source_patterns:
         match = re.search(pattern, text)
         if match:
             return match.group(0)
-    return None
+    return ''
 
 def extractDestination(text):
     destination_patterns = []
@@ -42,11 +40,11 @@ def extractDestination(text):
         match = re.search(pattern, text)
         if match:
             return match.group(0)
-    return None
+    return ''
 
 def extractDistance(text):
     distance_patterns = [
-        r'\d+\.?\d*[\s\n]*km',
+        r'\d+\.?\d*[\s\n]*[kK]m',
         r'\d+\.?\d*[\s\n]*kilometers',
     ]
     for pattern in distance_patterns:
@@ -67,12 +65,10 @@ def extractAmount(text):
 
 def extractDataFromInvoice(invoice):
     pdf=pdfplumber.open(invoice) 
-    text=extractTextFromPdf(invoice)
-    pdf=pdfplumber.open(invoice)
     length=len(pdf.pages)
     invoiceText=''
     for i in range(0,length):
-      invoiceText+=textpdf.pages[i].extract_text()
+      invoiceText+=pdf.pages[i].extract_text()
       invoiceText+='\n'
     date=extractBillDate(invoiceText)  #
     distance=extractDistance(invoiceText)  #  
