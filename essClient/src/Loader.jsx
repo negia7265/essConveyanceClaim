@@ -12,7 +12,7 @@ const Loader=({loading})=>{
         alignItems: 'center',
         justifyContent: 'center'
     }
-    if(loading)
+    if(loading==true)
     return <div style={positionLoader}>
     <div style={spinStyle} ></div>
     <style jsx>{`

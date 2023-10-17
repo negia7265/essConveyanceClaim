@@ -2,6 +2,8 @@ import styled from "styled-components";
 import React,{useState} from "react";
 import { FileUploader } from "react-drag-drop-files";
 import Loader from "./Loader";
+import axios from 'axios';
+import  FormData from 'form-data';
 const Global = styled.div`
   * {
     padding: 0;
@@ -59,8 +61,8 @@ const Form = styled.form`
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 50px 35px;
-  filter: ${props => props.loading ? "blur(8px)" : ""};
-  pointer-events: ${props => props.loading ? "none" : ""};
+  filter: ${props => props.loading=='true'? "blur(8px)" : ""};
+  pointer-events: ${props => props.loading=='true' ? "none" : ""};
 `;
 
 const Input = styled.input`
@@ -116,9 +118,30 @@ const GlassmorphismForm = () => {
   const fileTypes=["PDF"]
   const [file, setFile] = useState(null);
   const [loading,setLoading]=useState(false);
+  const [mode,setMode]=useState('');
+  const [distance,setDistance]=useState('');
+  const [pickUpAddress,setPickUpAddress]=useState('');
+  const [destinationAddress,setDestinationAddress]=useState('');
+  const [cost,setCost]=useState('');
+  const [date,setDate]=useState('');
   const handleChange = (file) => {
     setLoading(true);
     setFile(file);
+    const formData = new FormData();
+    formData.append('file',file);  
+     axios.post('http://127.0.0.1:5000/extractInvoice/', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    }).then((response)=>{
+      setCost(response.data.amount);
+      setMode(response.data.travelMode);
+      setDistance(response.data.Distance);
+      setPickUpAddress(response.data.sourceAddress);
+      setDestinationAddress(response.data.destinationAddress);  
+      setDate(response.data.Date);
+      setLoading(false);   
+    }).catch((error)=>console.error(error));
   };
   return (
     <Global>
@@ -127,7 +150,7 @@ const GlassmorphismForm = () => {
         <ShapeFirst />
         <ShapeLast />
       </Background>
-       <Form loading={loading}>
+       <Form loading={loading?"true":"false"}>
        <Label htmlFor="upload">Upload File Here...</Label>
         <FileUploader
         multiple={false}
@@ -137,18 +160,20 @@ const GlassmorphismForm = () => {
         maxSize={5}
          />
         <Text>{file ? `File name: ${file.name}` : "no files uploaded yet"}</Text>
+        <Label htmlFor="date">Date</Label>
+        <Input type="text" placeholder="For ex. 11 Mar 2024" onChange={(e)=>setDate(e.target.value)} value={date}/>
         <Label htmlFor="mode">Mode of Convince</Label>
-        <Input type="text" placeholder="For ex. Sedan" />
+        <Input type="text" placeholder="For ex. Sedan" onChange={(e)=>setMode(e.target.value)} value={mode}/>
         <Label htmlFor="purpose">Purpose</Label>
         <Dropdown selected={selected} setSelected={setSelected} />
-        <Label htmlFor="distance">Distance Travelled</Label>
-        <Input type="number" placeholder="For ex. 20.40 km" />
+        <Label htmlFor="distance">Distance Travelled(km)</Label>
+        <Input type="text" placeholder="For ex. 20.40 " onChange={(e)=>setDistance(e.target.value)} value={distance}/>
         <Label htmlFor="pickupAddress">Pickup Address</Label>
-        <Input type="text" placeholder="" />
+        <Input type="text" placeholder=""  onChange={(e)=>setPickUpAddress(e.target.value)} value={pickUpAddress}/>
         <Label htmlFor="destinationAddress">Destination Address</Label>
-        <Input type="text" placeholder="" />
+        <Input type="text" placeholder="" onChange={(e)=>setDestinationAddress(e.target.value)} value={destinationAddress}/>
         <Label htmlFor="cost">Total Cost</Label>
-        <Input type="number" placeholder="For ex. 30$"/>
+        <Input type="text" placeholder="For ex. 30$" onChange={(e)=>setCost(e.target.value)} value={cost}/>
         <Button>Submit</Button>
       </Form>
     </Global>
