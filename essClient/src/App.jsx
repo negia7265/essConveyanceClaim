@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import React,{useState} from "react";
 import { FileUploader } from "react-drag-drop-files";
-
+import Loader from "./Loader";
 const Global = styled.div`
   * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
   }
-
 `;
 
 const Background = styled.div`
@@ -60,6 +59,8 @@ const Form = styled.form`
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   padding: 50px 35px;
+  filter: ${props => props.loading ? "blur(8px)" : ""};
+  pointer-events: ${props => props.loading ? "none" : ""};
 `;
 
 const Input = styled.input`
@@ -114,16 +115,28 @@ const GlassmorphismForm = () => {
   const [selected, setSelected] = useState("Office To Home");
   const fileTypes=["PDF"]
   const [file, setFile] = useState(null);
+  const [loading,setLoading]=useState(false);
   const handleChange = (file) => {
+    setLoading(true);
     setFile(file);
   };
   return (
     <Global>
+      <Loader loading={loading}/>
       <Background>
         <ShapeFirst />
         <ShapeLast />
       </Background>
-      <Form>
+       <Form loading={loading}>
+       <Label htmlFor="upload">Upload File Here...</Label>
+        <FileUploader
+        multiple={false}
+        handleChange={handleChange}
+        name="file"
+        types={fileTypes}
+        maxSize={5}
+         />
+        <Text>{file ? `File name: ${file.name}` : "no files uploaded yet"}</Text>
         <Label htmlFor="mode">Mode of Convince</Label>
         <Input type="text" placeholder="For ex. Sedan" />
         <Label htmlFor="purpose">Purpose</Label>
@@ -136,15 +149,6 @@ const GlassmorphismForm = () => {
         <Input type="text" placeholder="" />
         <Label htmlFor="cost">Total Cost</Label>
         <Input type="number" placeholder="For ex. 30$"/>
-        <Label htmlFor="upload">Upload File Here...</Label>
-        <FileUploader
-        multiple={false}
-        handleChange={handleChange}
-        name="file"
-        types={fileTypes}
-        maxSize={5}
-        />
-       <Text>{file ? `File name: ${file.name}` : "no files uploaded yet"}</Text>
         <Button>Submit</Button>
       </Form>
     </Global>
