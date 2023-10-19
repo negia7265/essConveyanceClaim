@@ -4,6 +4,8 @@ import { FileUploader } from "react-drag-drop-files";
 import Loader from "./Loader";
 import axios from 'axios';
 import  FormData from 'form-data';
+import Dropdown from "./Dropdown";
+import {useLocation} from "react-router-dom";
 const Global = styled.div`
   * {
     padding: 0;
@@ -112,21 +114,23 @@ const options = [
 ]
 
 
-import Dropdown from "./Dropdown";
 const GlassmorphismForm = () => {
+  const location=useLocation();
+  const params = new URLSearchParams(location.search);
   const [selected, setSelected] = useState("Office To Home");
   const fileTypes=["PDF"]
   const [file, setFile] = useState(null);
   const [loading,setLoading]=useState(false);
-  const [mode,setMode]=useState('');
-  const [distance,setDistance]=useState('');
-  const [pickUpAddress,setPickUpAddress]=useState('');
-  const [destinationAddress,setDestinationAddress]=useState('');
-  const [cost,setCost]=useState('');
-  const [date,setDate]=useState('');
+  const [mode,setMode]=useState(params.get('Mode')?params.get('Mode'):'');
+  const [distance,setDistance]=useState(params.get('dis')?params.get('dis'):'');
+  const [pickUpAddress,setPickUpAddress]=useState(params.get('src')?params.get('src'):'');
+  const [destinationAddress,setDestinationAddress]=useState(params.get('dest')?params.get('dest'):'');
+  const [cost,setCost]=useState(params.get('amt')?params.get('amt'):'');
+  const [date,setDate]=useState(params.get('Date')?params.get('Date'):'');
   const handleChange = (file) => {
     setLoading(true);
     setFile(file);
+    console.log(file);
     const formData = new FormData();
     formData.append('file',file);  
      axios.post('http://127.0.0.1:5000/extractInvoice/', formData, {
