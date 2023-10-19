@@ -13,7 +13,7 @@ def index():
 def extractInvoice():
     if request.method == 'POST':       # checking if PDF received through post method
         FILE=request.files['file']
-        print(FILE.filename)
+        print(FILE)
         if FILE: 
              if FILE.mimetype != 'application/pdf':
                 return jsonify({'error': 'Invalid file type. Please upload a PDF.'})
