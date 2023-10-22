@@ -51,5 +51,11 @@ cd essAPI
 python3 app.py
 ```
 
-
+# Testing using pytest framework
+```bash
+pip install pytest pytest-html
+cd essAPI/TEST
+pytest --html=report.html test.py
+```
+> ### It will generate a html result page of tests run on all the INVOICE
 
