@@ -4,7 +4,11 @@
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/panwar2001/essConveyanceClaim?label=Code%20size&logo=python&logoColor=white&style=flat-square)
 ![GitHub repo size](https://img.shields.io/github/repo-size/panwar2001/essConveyanceClaim?label=Repo%20size&color=red&logo=github&logoColor=white&style=flat-square)
 ![GitHub stars](https://img.shields.io/github/stars/panwar2001/essConveyanceClaim?label=Stars&logo=github&style=flat-square)
+[![Lines Of Code](https://tokei.rs/b1/github/panwar2001/essConveyanceClaim?category=code)](https://github.com/panwar2001/essConveyanceClaim/)
 ![GitHub issues](https://img.shields.io/github/issues/panwar2001/essConveyanceClaim?label=Issues&color=yellow&logo=github&style=flat-square)
+<!-- [![Build Status](https://travis-ci.org/LexPredict/lexpredict-lexnlp.svg?branch=master)](https://travis-ci.org/LexPredict/lexpredict-lexnlp) -->
+<!-- [![Coverage Status](https://coveralls.io/repos/github/panwar2001/essConveyanceClaim/badge.svg?branch=main)](https://coveralls.io/github/panwar2001/essConveyanceClaim/) -->
+<!-- [![Docs](https://readthedocs.org/projects/lexpredict-lexnlp/badge/?version=docs-0.1.6)](http://lexpredict-lexnlp.readthedocs.io/en/docs-0.1.6/) -->
 
 
 
