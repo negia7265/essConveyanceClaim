@@ -13,7 +13,7 @@ amount_patterns = [
 class InvoiceParser(ExtractAddress):
     def __init__(self,invoice):
         self.invoice=pdfplumber.open(invoice)
-        location=json.load(open('../location.json'))
+        location=json.load(open('./location.json'))
         super().__init__(location)
         invoiceText=''
         self.address=[]
@@ -25,9 +25,8 @@ class InvoiceParser(ExtractAddress):
         self.invoice.close()
         self.textList=invoiceText.split('\n')
         self.distance=set()
-        self.date=[]
+        self.date=set()
         self.cost=set()
-        print(invoiceText)
         for pattern in amount_patterns:
           for amount in re.findall(pattern, invoiceText):
              self.cost.add(amount)
@@ -39,7 +38,7 @@ class InvoiceParser(ExtractAddress):
     def findDates(self,text):
       dates=list(datefinder.find_dates(text, strict=True))
       for d in dates:
-        self.date.append(d.strftime("%d-%m-%Y"))
+        self.date.add(d.strftime("%d-%m-%Y"))
 
     def findDistanceTravelled(self,text):
       for pattern in distance_patterns:
@@ -47,4 +46,4 @@ class InvoiceParser(ExtractAddress):
           self.distance.add(float(km))
     
     def getData(self):
-       return {'Date':self.date,'Distance':self.distance,'travelMode':None,'sourceAddress':self.address,'destinationAddress':self.address,'amount':self.cost}
+       return {'Date':list(self.date),'Distance':list(self.distance),'travelMode':[],'sourceAddress':self.address,'destinationAddress':self.address,'amount':list(self.cost)}
