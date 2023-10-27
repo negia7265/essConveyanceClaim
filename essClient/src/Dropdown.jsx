@@ -43,9 +43,8 @@ const DropdownItem = styled.div`
   }
 `;
 
-function Dropdown({ selected, setSelected }) {
+function Dropdown({ selected, setSelected,options }) {
   const [isActive, setIsActive] = useState(false);
-  const options = ["Office To Home", "Home To Office"];
   return (
     <DropdownContainer>
       <DropdownButton onClick={() => setIsActive(!isActive)}>
@@ -59,7 +58,8 @@ function Dropdown({ selected, setSelected }) {
           {options.map((option) => (
             <DropdownItem
               key={option}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault()
                 setSelected(option);
                 setIsActive(false);
               }}

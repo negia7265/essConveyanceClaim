@@ -4,8 +4,9 @@ import { FileUploader } from "react-drag-drop-files";
 import Loader from "./Loader";
 import axios from 'axios';
 import  FormData from 'form-data';
-import Dropdown from "./Dropdown";
 import {useLocation} from "react-router-dom";
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 const Global = styled.div`
   * {
     padding: 0;
@@ -101,7 +102,6 @@ const Label=styled.label`
   font-size:15px;
   font-weight:bold;
   background-color: rgba(255, 255, 255, 0.07);
-  color:white;
 `;
 const Text=styled.div`
   background-color: rgba(255, 255, 255, 0.00);
@@ -121,12 +121,21 @@ const GlassmorphismForm = () => {
   const fileTypes=["PDF"]
   const [file, setFile] = useState(null);
   const [loading,setLoading]=useState(false);
-  const [mode,setMode]=useState(params.get('Mode')?params.get('Mode'):'');
-  const [distance,setDistance]=useState(params.get('dis')?params.get('dis'):'');
-  const [pickUpAddress,setPickUpAddress]=useState(params.get('src')?params.get('src'):'');
-  const [destinationAddress,setDestinationAddress]=useState(params.get('dest')?params.get('dest'):'');
-  const [cost,setCost]=useState(params.get('amt')?params.get('amt'):'');
-  const [date,setDate]=useState(params.get('Date')?params.get('Date'):'');
+  
+  const [modeOptions,setModeOptions]=useState(params.get('Mode')?params.get('Mode'):[]);
+  const [distanceOptions,setDistanceOptions]=useState(params.get('dis')?params.get('dis'):[]);
+  const [pickUpAddressOptions,setPickUpAddressOptions]=useState(params.get('src')?params.get('src'):[]);
+  const [destinationAddressOptions,setDestinationAddressOptions]=useState(params.get('dest')?params.get('dest'):[]);
+  const [costOptions,setCostOptions]=useState(params.get('amt')?params.get('amt'):[]);
+  const [dateOptions,setDateOptions]=useState(params.get('Date')?params.get('Date'):[]);
+  
+  const [mode,setMode]=useState('');
+  const [distance,setDistance]=useState('');
+  const [pickUpAddress,setPickUpAddress]=useState('');
+  const [destinationAddress,setDestinationAddress]=useState('');
+  const [cost,setCost]=useState('');
+  const [date,setDate]=useState('');
+
   const handleChange = (file) => {
     setLoading(true);
     setFile(file);
@@ -138,12 +147,18 @@ const GlassmorphismForm = () => {
         'Content-Type': 'multipart/form-data',
       },
     }).then((response)=>{
-      setCost(response.data.amount);
-      setMode(response.data.travelMode);
-      setDistance(response.data.Distance);
-      setPickUpAddress(response.data.sourceAddress);
-      setDestinationAddress(response.data.destinationAddress);  
-      setDate(response.data.Date);
+      setCostOptions(response.data.amount);
+      setCost(response.data.amount.length>0?response.data.amount[0]:'Select...')
+      setModeOptions(response.data.travelMode);
+      setMode(response.data.travelMode.length>0?response.data.travelMode[0]:'Select...')
+      setDistanceOptions(response.data.Distance);
+      setDistance(response.data.Distance.length>0?response.data.Distance[0]:'Select...')
+      setPickUpAddressOptions(response.data.sourceAddress);
+      setPickUpAddress(response.data.sourceAddress.length>0?response.data.sourceAddress[0]:'Select...')
+      setDestinationAddressOptions(response.data.destinationAddress);  
+      setDestinationAddress(response.data.destinationAddress.length>0?response.data.destinationAddress[0]:'Select...')
+      setDateOptions(response.data.Date);
+      setDate(response.data.Date.length>0?response.data.Date[0]:'Select...')
       setLoading(false);   
     }).catch((error)=>console.error(error));
   };
@@ -165,19 +180,19 @@ const GlassmorphismForm = () => {
          />
         <Text>{file ? `File name: ${file.name}` : "no files uploaded yet"}</Text>
         <Label htmlFor="date">Date</Label>
-        <Input type="text" placeholder="For ex. 11 Mar 2024" onChange={(e)=>setDate(e.target.value)} value={date}/>
+        <Dropdown options={dateOptions} onChange={setDate} value={date} />
         <Label htmlFor="mode">Mode of Convince</Label>
-        <Input type="text" placeholder="For ex. Sedan" onChange={(e)=>setMode(e.target.value)} value={mode}/>
-        <Label htmlFor="purpose">Purpose</Label>
-        <Dropdown selected={selected} setSelected={setSelected} />
+        <Dropdown options={modeOptions} onChange={setMode} value={mode} />
+        {/* <Label htmlFor="purpose">Purpose</Label>
+        <Dropdown selected={selected} setSelected={setSelected} options={''}/> */}
         <Label htmlFor="distance">Distance Travelled(km)</Label>
-        <Input type="text" placeholder="For ex. 20.40 " onChange={(e)=>setDistance(e.target.value)} value={distance}/>
+        <Dropdown options={distanceOptions} onChange={setDistance} value={distance.toString()}  />
         <Label htmlFor="pickupAddress">Pickup Address</Label>
-        <Input type="text" placeholder=""  onChange={(e)=>setPickUpAddress(e.target.value)} value={pickUpAddress}/>
+        <Dropdown options={pickUpAddressOptions} onChange={setPickUpAddress} value={pickUpAddress}  />
         <Label htmlFor="destinationAddress">Destination Address</Label>
-        <Input type="text" placeholder="" onChange={(e)=>setDestinationAddress(e.target.value)} value={destinationAddress}/>
+        <Dropdown options={destinationAddressOptions} onChange={setDestinationAddress} value={destinationAddress} />
         <Label htmlFor="cost">Total Cost</Label>
-        <Input type="text" placeholder="For ex. 30$" onChange={(e)=>setCost(e.target.value)} value={cost}/>
+        <Dropdown options={costOptions} onChange={setCost} value={cost}  />
         <Button>Submit</Button>
       </Form>
     </Global>
