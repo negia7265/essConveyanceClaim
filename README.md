@@ -105,3 +105,8 @@ You may look through the GitHub [issues](https://github.com/panwar2001/essConvey
 - Fork the repository and create a new branch from the `develop` branch.
 - For bug fixes, add new tests. We use [Pytest](https://docs.pytest.org/en/7.4.x/)  to test our code.
 - Do a PR from your new branch to our `develop` branch of the essConveyanceClaim repo.
+
+# Contributors
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
