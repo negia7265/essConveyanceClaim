@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import Loader from "./Loader";
 import axios from "axios";
@@ -8,7 +8,8 @@ import { useLocation } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import "./index.css";
-
+import { Document, Page } from "react-pdf";
+import { pdfjs } from "react-pdf";
 const Global = styled.div`
   * {
     margin: 0;
@@ -106,7 +107,32 @@ const options = [
   { value: "Home To Office", label: "Home To Office" },
 ];
 
+const Preview = ({ file }) => {
+  console.log(file);
+  const [pdfFile, setPdfFile] = useState(null);
+  const handleLoadPdf = (file) => {
+    setPdfFile(URL.createObjectURL(file));
+  };
+  useEffect(() => {
+    if (file) {
+      handleLoadPdf(file);
+    }
+  }, [file]);
+  return (
+    <div>
+      {pdfFile ? (
+        <Document file={pdfFile}>
+          <Page pageNumber={1} />
+        </Document>
+      ) : (
+        <p>No PDF selected</p>
+      )}
+    </div>
+  );
+};
+
 const GlassmorphismForm = () => {
+  pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
   const location = useLocation();
 
   const params = new URLSearchParams(location.search);
@@ -154,7 +180,6 @@ const GlassmorphismForm = () => {
         },
       })
       .then((response) => {
-        console.log(response);
         setCostOptions(response.data.amount);
         setCost(
           response.data.amount.length > 0
@@ -215,6 +240,7 @@ const GlassmorphismForm = () => {
         <Text>
           {file ? `File name: ${file.name}` : "no files uploaded yet"}
         </Text>
+        <Preview file={file} />
         <Label htmlFor="date">Date</Label>
         <Dropdown
           options={dateOptions}

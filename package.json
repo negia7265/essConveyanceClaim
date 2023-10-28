@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@uppy/react": "^3.1.4"
+  }
+}
