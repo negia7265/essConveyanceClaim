@@ -64,20 +64,30 @@ pytest --html=report.html test.py
 
 
 ## 🐳 Docker Setup
-<!-- 
+
 ```bash
 # Build Docker Image
-docker build -t ess-conveyance-simplify -f docker/Dockerfile .
+sudo docker build -t  ess . 
 
-# Run Docker Image as Service
-docker run -dit -p 3000:3000 --restart=always --name=ess-simplify ess-simplify
+# Run Docker Image 
+sudo docker run --network host ess 
 
 # Get Docker Container Logs
-docker logs ess-simplify
+docker logs ess
 
-# Access make-sense: http://localhost:5173/
-``` -->
+# Access ess: http://localhost:5173/
 
+#To view all the docker images running write the following command in another terminal , this will contain the container id which will be required to stop the image
+sudo docker ps -a
+
+#To stop the image run the command example- sudo docker stop 55f6fd03d27e
+sudo docker stop container-id
+
+#To delete the docker image 
+sudo docker image rm -f ess
+
+#If changes are made to the code to view the changes in docker , the image has to be rebuild from starting.
+```
 
 # Contribution Guide
 
