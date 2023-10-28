@@ -1,3 +1,9 @@
 /* *{
     background-color: rgb(0, 32, 63);
 }  */
+.file-uploader {
+  border-color: green;
+}
+.test {
+  background-color: red;
+}
