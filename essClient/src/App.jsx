@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import "./index.css";
+
 const Global = styled.div`
   * {
     margin: 0;
@@ -197,10 +198,10 @@ const GlassmorphismForm = () => {
   return (
     <Global>
       <Loader loading={loading} />
-      <Background>
+      {/* <Background>
         <ShapeFirst />
         <ShapeLast />
-      </Background>
+      </Background> */}
       <Form loading={loading ? "true" : "false"}>
         <Label htmlFor="upload">Upload File Here...</Label>
         <FileUploader
@@ -261,10 +262,8 @@ const Heading = styled.h1`
 export default function App() {
   return (
     <>
-      <div>
-        <Heading>ESS CONVEYANCE</Heading>
-        <GlassmorphismForm />
-      </div>
+      <Heading>ESS CONVEYANCE</Heading>
+      <GlassmorphismForm />
     </>
   );
 }
