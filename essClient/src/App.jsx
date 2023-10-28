@@ -15,7 +15,6 @@ const Global = styled.div`
     box-sizing: border-box;
   }
 `;
-
 const Background = styled.div`
   width: 430px;
   height: 520px;
@@ -111,7 +110,6 @@ const GlassmorphismForm = () => {
   const location = useLocation();
 
   const params = new URLSearchParams(location.search);
-  console.log(params);
   const [selected, setSelected] = useState("Office To Home");
   const fileTypes = ["PDF"];
   const [file, setFile] = useState(null);
@@ -144,9 +142,9 @@ const GlassmorphismForm = () => {
   const [date, setDate] = useState("");
 
   const handleChange = (file) => {
+    console.log(typeof file);
     setLoading(true);
     setFile(file);
-    console.log(file);
     const formData = new FormData();
     formData.append("file", file);
     axios
@@ -156,6 +154,7 @@ const GlassmorphismForm = () => {
         },
       })
       .then((response) => {
+        console.log(response);
         setCostOptions(response.data.amount);
         setCost(
           response.data.amount.length > 0
@@ -204,6 +203,7 @@ const GlassmorphismForm = () => {
       </Background> */}
       <Form loading={loading ? "true" : "false"}>
         <Label htmlFor="upload">Upload File Here...</Label>
+        {/* <Dashboard uppy={uppy} plugins={["Webcam"]} /> */}
         <FileUploader
           multiple={false}
           handleChange={handleChange}
