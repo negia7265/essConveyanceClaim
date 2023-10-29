@@ -11,10 +11,10 @@ import "./index.css";
 import { Document, Page } from "react-pdf";
 import { pdfjs } from "react-pdf";
 const Global = styled.div`
-  * {
     margin: 0;
     box-sizing: border-box;
-  }
+    display:flex;
+    justify-content:center;
 `;
 const Background = styled.div`
   width: 430px;
@@ -46,14 +46,10 @@ const ShapeLast = styled(Shape)`
 `;
 
 const Form = styled.form`
-  height: 70%;
+  height: auto;
   width: 80%;
-  overflow-y: scroll;
   background-color: rgba(255, 255, 255, 0.07);
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
+  position: relative;
   border-radius: 10px;
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
@@ -136,13 +132,12 @@ const GlassmorphismForm = () => {
   const location = useLocation();
 
   const params = new URLSearchParams(location.search);
-  const [selected, setSelected] = useState("Office To Home");
   const fileTypes = ["PDF"];
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const [modeOptions, setModeOptions] = useState(
-    params.get("Mode") ? params.get("Mode") : []
+  const [purposeOptions, setPurposeOptions] = useState(
+    ['Home To Office','Office To Home']
   );
   const [distanceOptions, setDistanceOptions] = useState(
     params.get("dis") ? params.get("dis") : []
@@ -160,7 +155,7 @@ const GlassmorphismForm = () => {
     params.get("Date") ? params.get("Date") : []
   );
 
-  const [mode, setMode] = useState("");
+  const [purpose, setPurpose] = useState("");
   const [distance, setDistance] = useState("");
   const [pickUpAddress, setPickUpAddress] = useState("");
   const [destinationAddress, setDestinationAddress] = useState("");
@@ -184,12 +179,6 @@ const GlassmorphismForm = () => {
         setCost(
           response.data.amount.length > 0
             ? response.data.amount[0]
-            : "Select..."
-        );
-        setModeOptions(response.data.travelMode);
-        setMode(
-          response.data.travelMode.length > 0
-            ? response.data.travelMode[0]
             : "Select..."
         );
         setDistanceOptions(response.data.Distance);
@@ -240,7 +229,6 @@ const GlassmorphismForm = () => {
         <Text>
           {file ? `File name: ${file.name}` : "no files uploaded yet"}
         </Text>
-        <Preview file={file} />
         <Label htmlFor="date">Date</Label>
         <Dropdown
           options={dateOptions}
@@ -248,10 +236,12 @@ const GlassmorphismForm = () => {
           value={date}
           className="custom-dropdown"
         />
-        <Label htmlFor="mode">Mode of Convince</Label>
-        <Dropdown options={modeOptions} onChange={setMode} value={mode} />
-        {/* <Label htmlFor="purpose">Purpose</Label>
-        <Dropdown selected={selected} setSelected={setSelected} options={''}/> */}
+        <Label htmlFor="purpose">Purpose</Label>
+        <Dropdown 
+          options={purposeOptions}
+          onChange={setPurpose}
+          value={purpose}
+         />
         <Label htmlFor="distance">Distance Travelled(km)</Label>
         <Dropdown
           options={distanceOptions}
@@ -273,13 +263,16 @@ const GlassmorphismForm = () => {
         <Label htmlFor="cost">Total Cost</Label>
         <Dropdown options={costOptions} onChange={setCost} value={cost} />
         <Button>Submit</Button>
+        {/* <Preview file={file} /> */}
+
       </Form>
     </Global>
   );
 };
 
 const Heading = styled.h1`
-  color: orange;
+  color: black;
+  font-family:Oswald;
   justify-content: center;
   align-items: center;
   text-align: center;
