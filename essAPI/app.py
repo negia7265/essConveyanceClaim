@@ -27,8 +27,7 @@ def extractInvoice():
     print(parser)
     response = jsonify(parser.getData())
     response.headers.add('Access-Control-Allow-Origin', '*')
-    return response  # return json data to client side
-
-
-if __name__ == '__main__':
-    app.run(debug=True)  # to start flask application
+    return  response  #return json data to client side
+    
+if __name__=='__main__':
+    app.run(debug=True) # Please do not set debug=True in production
