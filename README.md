@@ -65,17 +65,22 @@ pytest --html=report.html test.py
 
 ## 🐳 Docker Setup
 
+## Client-Side Docker image build
+
 ```bash
-# Build Docker Image
-sudo docker build -t  ess . 
+# change directory to essClient => /essClient
+cd essClient 
+
+# Build Client Docker Image  
+sudo docker build -t  ess-client . 
 
 # Run Docker Image 
-sudo docker run --network host ess 
+sudo docker run --network host ess-client 
 
 # Get Docker Container Logs
-docker logs ess
+sudo docker logs ess-client
 
-# Access ess: http://localhost:5173/
+# Access ess-client: http://localhost:5173/
 
 #To view all the docker images running write the following command in another terminal , this will contain the container id which will be required to stop the image
 sudo docker ps -a
@@ -84,7 +89,36 @@ sudo docker ps -a
 sudo docker stop container-id
 
 #To delete the docker image 
-sudo docker image rm -f ess
+sudo docker image rm -f ess-client
+
+#If changes are made to the code to view the changes in docker , the image has to be rebuild from starting.
+```
+
+## Server-Side Docker image build
+
+```bash
+# change directory to essAPI => /essAPI
+cd essAPI
+
+# Build API Docker Image  
+sudo docker build -t  ess-api . 
+
+# Run Docker Image 
+sudo docker run --network host ess-api 
+
+# Get Docker Container Logs
+sudo docker logs ess-api
+
+# Access ess-api: http://127.0.0.1:5000/
+
+#To view all the docker images running write the following command in another terminal , this will contain the container id which will be required to stop the image
+sudo docker ps -a
+
+#To stop the image run the command example- sudo docker stop 55f6fd03d27e
+sudo docker stop container-id
+
+#To delete the docker image 
+sudo docker image rm -f ess-api
 
 #If changes are made to the code to view the changes in docker , the image has to be rebuild from starting.
 ```
