@@ -61,8 +61,6 @@ export const ItemContainer = styled.li`
   padding: 0.5rem 0.25rem;
   border-radius: 0.2rem;
   cursor: pointer;
-    postion:absolute;
-
   &:hover {
     background: #eaeced;
   }
