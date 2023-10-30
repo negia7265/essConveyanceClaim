@@ -7,11 +7,12 @@ import FormData from "form-data";
 import { useLocation } from "react-router-dom";
 import Dropdown from "./DropDown";
 import { Document, Page } from "react-pdf";
+
 import { pdfjs } from "react-pdf";
 
 const Form = styled.form`
   width: 100%;
-  margin:2em;
+  margin: 2em;
   background-color: rgba(255, 255, 255, 0.07);
   position: relative;
   border-radius: 10px;
@@ -44,7 +45,7 @@ const Button = styled.button`
   margin-top: 50px;
   width: 100%;
   background-color: #ffffff;
-  border:1px solid black;
+  border: 1px solid black;
   color: #080710;
   padding: 15px 0;
   font-size: 18px;
@@ -66,6 +67,7 @@ const Text = styled.div`
 
 const Preview = ({ file }) => {
   const [pdfFile, setPdfFile] = useState(null);
+  const [numPages, setNumPages] = useState(1);
   const handleLoadPdf = (file) => {
     setPdfFile(URL.createObjectURL(file));
   };
@@ -74,23 +76,35 @@ const Preview = ({ file }) => {
       handleLoadPdf(file);
     }
   }, [file]);
+  const PrevStyle = {
+    height: "400px",
+    width: "350px",
+    backgroundColor: "rgba(128, 128, 128, 0.4)",
+    borderRadius: "7px",
+  };
   return (
-    <div>
+    <div style={PrevStyle}>
       {pdfFile ? (
-        <Document file={pdfFile}>
-        </Document>
+        <Document file={pdfFile}></Document>
       ) : (
-        <p>No PDF selected</p>
+        <p
+          style={{
+            backgroundColor: "rgba(128, 128, 128, 0.4)",
+            textAlign: "center",
+            fontSize: "30px",
+            borderRadius: "3px",
+          }}
+        >
+          No PDF selected
+        </p>
       )}
     </div>
   );
 };
 
-const purposeOptions=[
-  'Home To Office','Office To Home'
-];
+const purposeOptions = ["Home To Office", "Office To Home"];
 
-const ConveyanceForm= () => {
+const ConveyanceForm = () => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -114,7 +128,7 @@ const ConveyanceForm= () => {
     params.get("Date") ? params.get("Date") : []
   );
 
-  const [purpose, setPurpose] = useState('Home To Office');
+  const [purpose, setPurpose] = useState("Home To Office");
   const [distance, setDistance] = useState([]);
   const [pickUpAddress, setPickUpAddress] = useState([]);
   const [destinationAddress, setDestinationAddress] = useState([]);
@@ -184,63 +198,54 @@ const ConveyanceForm= () => {
         </Text>
         <Label htmlFor="date">Date</Label>
 
-        <Dropdown
-        options={dateOptions}
-        setSelected={setDate}
-        selected={date}
-        />
+        <Dropdown options={dateOptions} setSelected={setDate} selected={date} />
 
         <Label htmlFor="purpose">Purpose</Label>
         <Dropdown
-        options={purposeOptions}
-        setSelected={setPurpose}
-        selected={purpose}
+          options={purposeOptions}
+          setSelected={setPurpose}
+          selected={purpose}
         />
 
         <Label htmlFor="distance">Distance Travelled(km)</Label>
 
         <Dropdown
-        options={distanceOptions}
-        setSelected={setDistance}
-        selected={distance}
+          options={distanceOptions}
+          setSelected={setDistance}
+          selected={distance}
         />
 
         <Label htmlFor="pickupAddress">Pickup Address</Label>
-       <Dropdown
-        options={pickUpAddressOptions}
-        setSelected={setPickUpAddress}
-        selected={pickUpAddress}
+        <Dropdown
+          options={pickUpAddressOptions}
+          setSelected={setPickUpAddress}
+          selected={pickUpAddress}
         />
 
         <Label htmlFor="destinationAddress">Destination Address</Label>
         <Dropdown
-        options={destinationAddressOptions}
-        setSelected={setDestinationAddress}
-        selected={destinationAddress}
+          options={destinationAddressOptions}
+          setSelected={setDestinationAddress}
+          selected={destinationAddress}
         />
 
         <Label htmlFor="cost">Total Cost</Label>
-        <Dropdown
-        options={costOptions}
-        setSelected={setCost}
-        selected={cost}
-        />
+        <Dropdown options={costOptions} setSelected={setCost} selected={cost} />
 
         <Button>Submit</Button>
       </Form>
       <Loader loading={loading} />
-
     </>
   );
 };
 
 const Heading = styled.h1`
   color: black;
-  font-family:Oswald;
+  font-family: Oswald;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-size: 40px;
 `;
 
-export default ConveyanceForm ;
+export default ConveyanceForm;
