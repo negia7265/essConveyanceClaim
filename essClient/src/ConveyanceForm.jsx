@@ -10,44 +10,10 @@ import "react-dropdown/style.css";
 import "./index.css";
 import { Document, Page } from "react-pdf";
 import { pdfjs } from "react-pdf";
-const Global = styled.div`
-    margin: 0;
-    box-sizing: border-box;
-    display:flex;
-    justify-content:center;
-`;
-const Background = styled.div`
-  width: 430px;
-  height: 520px;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  opacity: 0;
-`;
-
-const Shape = styled.div`
-  height: 200px;
-  width: 200px;
-  position: absolute;
-  border-radius: 50%;
-`;
-
-const ShapeFirst = styled(Shape)`
-  background: linear-gradient(#9b22ea, #bf23f6);
-  left: -60%;
-  top: -5%;
-`;
-
-const ShapeLast = styled(Shape)`
-  background: linear-gradient(to right, #ff512f, #f09819);
-  right: -30px;
-  bottom: -80px;
-`;
 
 const Form = styled.form`
-  height: auto;
-  width: 80%;
+  width: 100%;
+  margin:2em;
   background-color: rgba(255, 255, 255, 0.07);
   position: relative;
   border-radius: 10px;
@@ -80,6 +46,7 @@ const Button = styled.button`
   margin-top: 50px;
   width: 100%;
   background-color: #ffffff;
+  border:1px solid black;
   color: #080710;
   padding: 15px 0;
   font-size: 18px;
@@ -104,7 +71,6 @@ const options = [
 ];
 
 const Preview = ({ file }) => {
-  console.log(file);
   const [pdfFile, setPdfFile] = useState(null);
   const handleLoadPdf = (file) => {
     setPdfFile(URL.createObjectURL(file));
@@ -118,7 +84,6 @@ const Preview = ({ file }) => {
     <div>
       {pdfFile ? (
         <Document file={pdfFile}>
-          <Page pageNumber={1} />
         </Document>
       ) : (
         <p>No PDF selected</p>
@@ -127,7 +92,7 @@ const Preview = ({ file }) => {
   );
 };
 
-const GlassmorphismForm = () => {
+const ConveyanceForm= () => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
   const location = useLocation();
 
@@ -164,7 +129,7 @@ const GlassmorphismForm = () => {
 
   const handleChange = (file) => {
     console.log(typeof file);
-    setLoading(true);
+    setLoading(false);
     setFile(file);
     const formData = new FormData();
     formData.append("file", file);
@@ -209,15 +174,10 @@ const GlassmorphismForm = () => {
   };
 
   return (
-    <Global>
+    <>
       <Loader loading={loading} />
-      {/* <Background>
-        <ShapeFirst />
-        <ShapeLast />
-      </Background> */}
       <Form loading={loading ? "true" : "false"}>
         <Label htmlFor="upload">Upload File Here...</Label>
-        {/* <Dashboard uppy={uppy} plugins={["Webcam"]} /> */}
         <FileUploader
           multiple={false}
           handleChange={handleChange}
@@ -263,10 +223,8 @@ const GlassmorphismForm = () => {
         <Label htmlFor="cost">Total Cost</Label>
         <Dropdown options={costOptions} onChange={setCost} value={cost} />
         <Button>Submit</Button>
-        {/* <Preview file={file} /> */}
-
       </Form>
-    </Global>
+    </>
   );
 };
 
@@ -278,11 +236,5 @@ const Heading = styled.h1`
   text-align: center;
   font-size: 40px;
 `;
-export default function App() {
-  return (
-    <>
-      <Heading>ESS CONVEYANCE</Heading>
-      <GlassmorphismForm />
-    </>
-  );
-}
+
+export default ConveyanceForm ;
