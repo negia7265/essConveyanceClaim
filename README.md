@@ -63,7 +63,7 @@ pytest --html=report.html test.py
 > ### It will generate a html result page of tests run on all the INVOICE
 
 
-## 🐳 Docker Setup
+## 🐳 [Docker Setup](https://docs.docker.com/engine/install/)
 
 ## Client-Side Docker image build
 
@@ -121,6 +121,21 @@ sudo docker stop container-id
 sudo docker image rm -f ess-api
 
 #If changes are made to the code to view the changes in docker , the image has to be rebuild from starting.
+```
+# Git Helpfull commands
+```bash
+# To see commit history , each stacked having one line detail.
+git log --oneline 
+
+git pull --rebase origin main
+
+git push -u origin main
+
+git status
+
+git diff
+
+git checkout
 ```
 
 # Contribution Guide
