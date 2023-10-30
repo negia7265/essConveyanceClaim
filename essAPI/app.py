@@ -19,12 +19,13 @@ def index():
 @app.route('/extractInvoice/', methods=['POST'])
 def extractInvoice():
     FILE = request.files['file']
-    print(FILE)
-    if (not FILE) or (FILE.mimetype != 'application/pdf'):
+    print('dfsk')
+    if not FILE:
+        return jsonify({'error': 'File Not Uploaded'})
+    if (FILE.mimetype != 'application/pdf'):
         return jsonify({'error': 'Invalid file type. Please upload a PDF.'})
     invoice = BytesIO(FILE.read())
     parser = InvoiceParser(invoice)
-    print(parser)
     response = jsonify(parser.getData())
     response.headers.add('Access-Control-Allow-Origin', '*')
     return  response  #return json data to client side

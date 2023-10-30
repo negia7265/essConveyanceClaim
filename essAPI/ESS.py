@@ -17,7 +17,6 @@ amount_patterns = [
 class InvoiceParser(ExtractAddress):
     def __init__(self, invoice):
         self.invoice = pdfplumber.open(invoice)
-
         current_dir = os.path.dirname(__file__)
         location_json_path = os.path.join(current_dir, 'location.json')
         with open(location_json_path, 'r') as json_file:
@@ -28,6 +27,7 @@ class InvoiceParser(ExtractAddress):
         invoiceText = ''
         self.address = []
         for page in self.invoice.pages:
+            page=page.dedupe_chars(tolerance=1)
             invoiceText += page.extract_text()+' '
             super().extractWords(page.extract_words())
             super().extractLines()
