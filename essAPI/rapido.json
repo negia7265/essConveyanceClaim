@@ -1,0 +1,217 @@
+{
+    "RAPIDO_1.pdf": {
+        "Date": [
+            "12-09-2023"
+        ],
+        "Distance": [
+            9.62
+        ],
+        "sourceAddress": [
+            "B-92, Mehuwala Mafi, Dehradun, Harbanswala, Uttarakhand 248171, India"
+        ],
+        "destinationAddress": [
+            "Dehradun Parade Graund, Darshan Lal Chowk, Race Course, Dehradun, Uttarakhand 248001, India"
+        ],
+        "amount": [
+            285.0
+        ]
+    },
+    "RAPIDO_2.pdf": {
+        "Date": [
+            "27-08-2023"
+        ],
+        "Distance": [
+            3.96
+        ],
+        "sourceAddress": [
+            "81/9, Mehuwala Mafi, Dehradun, Harbanswala, Uttarakhand 248171, India"
+        ],
+        "destinationAddress": [
+            "7XQW+HV6, ISBT Chowk, ISBT, Majra, Dehradun, Sewla Khurd, Uttarakhand"
+        ],
+        "amount": [
+            54.0
+        ]
+    },
+    "RAPIDO_3.pdf": {
+        "Date": [
+            "09-10-2023"
+        ],
+        "Distance": [
+            7.08
+        ],
+        "sourceAddress": [
+            "Shop No.1, LGF, Capri Trade Center, Chakarata Road, Old Cannaught Place, Chukkuwala, Dehradun, Uttarakhand 248001, India"
+        ],
+        "destinationAddress": [
+            "8X6Q+4QG, Mehuwala Mafi, Dehradun, Harbanswala, Uttarakhand 248171, India"
+        ],
+        "amount": [
+            75.0
+        ]
+    },
+    "RAPIDO_4.pdf": {
+        "Date": [
+            "25-10-2019"
+        ],
+        "Distance": [
+            14.29
+        ],
+        "sourceAddress": [
+            "Unnamed Road, Kavuri Hills Phase 1, Kavuri Hills, Jubilee Hills, Hyderabad, Telangana 500033, India" 
+        ],
+        "destinationAddress": [
+            "Block YSR Residency, Barkatpura Rd, Chitrapuri Colony, Lingampally, Kachiguda, Hyderabad, Telangana 500027, India"
+        ],
+        "amount": [157.0]
+    },
+    "RAPIDO_5.pdf": {
+        "Date": [
+            "16-07-2022"
+        ],
+        "Distance": [
+            11.12
+        ],
+        "sourceAddress": [
+            "PF10, Railway Officer Colony, Botiguda, Bhoiguda, Secunderabad, Telangana 5, 500025, India"
+        ],
+        "destinationAddress": [
+            "17-1-178/A/15/A, near Raheem Function Hall, Salala Nagar, Santosh Nagar, Hyderabad, Telangana 500059, India"
+        ],
+        "amount": [
+            272.0
+        ]
+    },
+    "RAPIDO_6.pdf": {
+        "Date": [
+            "09-02-2022"
+        ],
+        "Distance": [
+            11.38
+        ],
+        "sourceAddress": [
+            "40, Moosapet Cross Rd, Pragathi Nagar, Moosapet, Hyderabad, Telangana 500018,India"
+        ],
+        "destinationAddress": [
+            "CGM2+GHR, Railway Officer Colony, Botiguda, Bhoiguda, Secunderabad, Telangana 500003, India"
+        ],
+        "amount": [
+            168.0
+        ]
+    },
+    "RAPIDO_7.pdf": {
+        "Date": [
+            "18-03-2023"
+        ],
+        "Distance": [
+            5.91
+        ],
+        "sourceAddress": [
+            "64, Jubilee Enclave, HITEC City, Hyderabad, Telangana 500081, India"
+        ],
+        "destinationAddress": [
+            "754, Rd Number 36, CBI Colony, Jubilee Hills, Hyderabad, Telangana 500033, India"
+        ],
+        "amount": [
+            79.0
+        ]
+    },
+    "RAPIDO_8.pdf": {
+        "Date": [
+            "11-12-2022"
+        ],
+        "Distance": [
+            3.21
+        ],
+        "sourceAddress": [
+            "1/352, Manapakkam Main Rd, near Miot Hospital, Parthasarathy Nagar,Manapakkam, Chennai, Tamil Nadu 600118, India"
+        ],
+        "destinationAddress": [
+            "2-161, Phase-3, AGS Colony, Mugalivakkam, Chennai, Tamil Nadu 600116, India"
+        ],
+        "amount": [
+            42.0
+        ]
+    },
+    "RAPIDO_9.pdf": {
+        "Date": [
+            "27-10-2022"
+        ],
+        "Distance": [
+            13.31
+        ],
+        "sourceAddress": [
+            "19, LB Rd, Baktavatsalm Nagar, Adyar, Chennai, Tamil Nadu 600020, India"
+        ],
+        "destinationAddress": [
+            "F-35, 2nd Ave, G Block, Anna Nagar, Sector B, Annanagar East, Chennai, Tamil Nadu 600040, India"
+        ],
+        "amount": [
+            149.0
+        ]
+    },
+    "RAPIDO_10.pdf": {
+        "Date": [
+            "03-11-2022"
+        ],
+        "Distance": [
+            3.45
+        ],
+        "sourceAddress": [
+            "FG52+X65, Knowledge Park II, Greater Noida, Uttar Pradesh 201310, India"
+        ],
+        "destinationAddress": [
+            "FG52+X65, Knowledge Park II, Greater Noida, Uttar Pradesh 201310, India"
+        ],
+        "amount": [
+            39.0
+        ]
+    },
+    "RAPIDO_11.pdf": {
+        "Date": ["11-07-2022"],
+        "Distance": [8.15],
+        "sourceAddress": [
+           "I70, Talimabad, Sangam Vihar, New Delhi, Delhi 110062, India"
+        ],
+        "destinationAddress": [
+           "FF 07, First floor, Salcon, Rasvilas, Saket District Centre, District Centre, Sector 6, Pushp Vihar, New Delhi, Delhi 110017, India"
+        ],
+        "amount": [
+            90.0
+        ]
+    },
+    "RAPIDO_12.pdf": {
+        "Date": [
+            "19-09-2022"
+        ],
+        "Distance": [
+            4.22
+        ],
+        "sourceAddress": [
+            "H Block, Sector 62, Noida, Uttar Pradesh 201301, India"
+        ],
+        "destinationAddress": [
+            "B-910, Assotech Cabana, Vaibhav Khand, Indirapuram, Ghaziabad, Uttar Pradesh 201014, India"
+        ],
+        "amount": [
+            24.0
+        ]
+    },
+    "RAPIDO_13.pdf": {
+        "Date": [
+            "01-11-2022"
+        ],
+        "Distance": [
+            3.08
+        ],
+        "sourceAddress": [
+            "281c, near IIMT, Knowledge Park III, Greater Noida, Uttar Pradesh 201310, India"
+        ],
+        "destinationAddress": [
+            "FG52+X65 Greater Noida, Uttar Pradesh, India"
+        ],
+        "amount": [
+            24.0
+        ]
+    }
+}
