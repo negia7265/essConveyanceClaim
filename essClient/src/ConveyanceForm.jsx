@@ -5,15 +5,14 @@ import Loader from "./Loader";
 import axios from "axios";
 import FormData from "form-data";
 import { useLocation } from "react-router-dom";
-import Dropdown from "react-dropdown";
-import "react-dropdown/style.css";
-import "./index.css";
+import Dropdown from "./DropDown";
 import { Document, Page } from "react-pdf";
+
 import { pdfjs } from "react-pdf";
 
 const Form = styled.form`
   width: 100%;
-  margin:2em;
+  margin: 2em;
   background-color: rgba(255, 255, 255, 0.07);
   position: relative;
   border-radius: 10px;
@@ -46,7 +45,7 @@ const Button = styled.button`
   margin-top: 50px;
   width: 100%;
   background-color: #ffffff;
-  border:1px solid black;
+  border: 1px solid black;
   color: #080710;
   padding: 15px 0;
   font-size: 18px;
@@ -65,13 +64,10 @@ const Text = styled.div`
   color: orange;
   font-size: 15px;
 `;
-const options = [
-  { value: "Office To Home", label: "Office To Home" },
-  { value: "Home To Office", label: "Home To Office" },
-];
 
 const Preview = ({ file }) => {
   const [pdfFile, setPdfFile] = useState(null);
+  const [numPages, setNumPages] = useState(1);
   const handleLoadPdf = (file) => {
     setPdfFile(URL.createObjectURL(file));
   };
@@ -80,30 +76,42 @@ const Preview = ({ file }) => {
       handleLoadPdf(file);
     }
   }, [file]);
+  const PrevStyle = {
+    height: "400px",
+    width: "350px",
+    backgroundColor: "rgba(128, 128, 128, 0.4)",
+    borderRadius: "7px",
+  };
   return (
-    <div>
+    <div style={PrevStyle}>
       {pdfFile ? (
-        <Document file={pdfFile}>
-        </Document>
+        <Document file={pdfFile}></Document>
       ) : (
-        <p>No PDF selected</p>
+        <p
+          style={{
+            backgroundColor: "rgba(128, 128, 128, 0.4)",
+            textAlign: "center",
+            fontSize: "30px",
+            borderRadius: "3px",
+          }}
+        >
+          No PDF selected
+        </p>
       )}
     </div>
   );
 };
 
-const ConveyanceForm= () => {
+const purposeOptions = ["Home To Office", "Office To Home"];
+
+const ConveyanceForm = () => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
   const location = useLocation();
-
   const params = new URLSearchParams(location.search);
   const fileTypes = ["PDF"];
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const [purposeOptions, setPurposeOptions] = useState(
-    ['Home To Office','Office To Home']
-  );
   const [distanceOptions, setDistanceOptions] = useState(
     params.get("dis") ? params.get("dis") : []
   );
@@ -120,16 +128,16 @@ const ConveyanceForm= () => {
     params.get("Date") ? params.get("Date") : []
   );
 
-  const [purpose, setPurpose] = useState("");
-  const [distance, setDistance] = useState("");
-  const [pickUpAddress, setPickUpAddress] = useState("");
-  const [destinationAddress, setDestinationAddress] = useState("");
-  const [cost, setCost] = useState("");
-  const [date, setDate] = useState("");
+  const [purpose, setPurpose] = useState("Home To Office");
+  const [distance, setDistance] = useState([]);
+  const [pickUpAddress, setPickUpAddress] = useState([]);
+  const [destinationAddress, setDestinationAddress] = useState([]);
+  const [cost, setCost] = useState([]);
+  const [date, setDate] = useState(null);
 
   const handleChange = (file) => {
     console.log(typeof file);
-    setLoading(false);
+    setLoading(true);
     setFile(file);
     const formData = new FormData();
     formData.append("file", file);
@@ -175,7 +183,6 @@ const ConveyanceForm= () => {
 
   return (
     <>
-      <Loader loading={loading} />
       <Form loading={loading ? "true" : "false"}>
         <Label htmlFor="upload">Upload File Here...</Label>
         <FileUploader
@@ -190,51 +197,55 @@ const ConveyanceForm= () => {
           {file ? `File name: ${file.name}` : "no files uploaded yet"}
         </Text>
         <Label htmlFor="date">Date</Label>
-        <Dropdown
-          options={dateOptions}
-          onChange={setDate}
-          value={date}
-          className="custom-dropdown"
-        />
+
+        <Dropdown options={dateOptions} setSelected={setDate} selected={date} />
+
         <Label htmlFor="purpose">Purpose</Label>
-        <Dropdown 
+        <Dropdown
           options={purposeOptions}
-          onChange={setPurpose}
-          value={purpose}
-         />
+          setSelected={setPurpose}
+          selected={purpose}
+        />
+
         <Label htmlFor="distance">Distance Travelled(km)</Label>
+
         <Dropdown
           options={distanceOptions}
-          onChange={setDistance}
-          value={distance.toString()}
+          setSelected={setDistance}
+          selected={distance}
         />
+
         <Label htmlFor="pickupAddress">Pickup Address</Label>
         <Dropdown
           options={pickUpAddressOptions}
-          onChange={setPickUpAddress}
-          value={pickUpAddress}
+          setSelected={setPickUpAddress}
+          selected={pickUpAddress}
         />
+
         <Label htmlFor="destinationAddress">Destination Address</Label>
         <Dropdown
           options={destinationAddressOptions}
-          onChange={setDestinationAddress}
-          value={destinationAddress}
+          setSelected={setDestinationAddress}
+          selected={destinationAddress}
         />
+
         <Label htmlFor="cost">Total Cost</Label>
-        <Dropdown options={costOptions} onChange={setCost} value={cost} />
+        <Dropdown options={costOptions} setSelected={setCost} selected={cost} />
+
         <Button>Submit</Button>
       </Form>
+      <Loader loading={loading} />
     </>
   );
 };
 
 const Heading = styled.h1`
   color: black;
-  font-family:Oswald;
+  font-family: Oswald;
   justify-content: center;
   align-items: center;
   text-align: center;
   font-size: 40px;
 `;
 
-export default ConveyanceForm ;
+export default ConveyanceForm;

@@ -8,9 +8,9 @@ const Loader=({loading})=>{
     animation: 'spin .5s linear infinite',
     }
     const positionLoader={
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+      position:'absolute',
+      top:'20%',
+      left:'50%',
     }
     if(loading==true)
     return <div style={positionLoader}>
