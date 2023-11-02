@@ -104,7 +104,7 @@ const Preview = ({ file }) => {
 
 const purposeOptions = ["Home To Office", "Office To Home"];
 
-const ConveyanceForm = () => {
+const ConveyanceForm = (props) => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -139,6 +139,7 @@ const ConveyanceForm = () => {
     console.log(typeof file);
     setLoading(true);
     setFile(file);
+    props.setFileData(file);
     const formData = new FormData();
     formData.append("file", file);
     axios
