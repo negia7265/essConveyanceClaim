@@ -35,19 +35,23 @@ const mailListener = new MailListener({
 mailListener.start(); // start listening
 
 
-const  cabs=['ola','uber'];
+const  cabs=['ola','uber','rapido'];
 const checkValidMail=(subject,attachmentsCount,contentType)=>{
   if(attachmentsCount!=1 && contentType!='application/pdf'){
     return false;
   }
   const sub=subject.toLowerCase().split(' ');
   let subLen=sub.length,cabsLen=cabs.length;
-  for(let i=0;i<subLen;i++){
-    for(let j=0;j<cabsLen;j++){
-      if(sub[i]==cabs[j]){
-        return true;
-      }
-    }
+  // for(let i=0;i<subLen;i++){
+  //   for(let j=0;j<cabsLen;j++){
+  //     if(sub[i]==cabs[j]){
+  //       return true;
+  //     }
+  //   }
+  // }
+  const c = sub.every(item => cabs.includes(item));
+  if(c){
+    return true;
   }
   return false;
 }
@@ -93,3 +97,4 @@ mailListener.on("mail", (mail, seqno)=>{
      sendMail(mailOptions);
   }
 });
+/*sadsad*/
