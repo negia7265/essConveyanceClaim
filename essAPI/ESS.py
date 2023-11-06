@@ -8,6 +8,7 @@ import os
 distance_patterns = [
     r'(\d+\.?\d*)\s*[kK][Mm]',
     r'(\d+\.?\d*)\s*kilometers',
+    r'(\d+\.?\d*)\s*kilometres',
 ]
 amount_patterns = [
     r'[Tt]otal[\w\s]+₹\s*(\d+\.?\d*)'
@@ -37,9 +38,16 @@ class InvoiceParser(ExtractAddress):
         self.distance = set()
         self.date = set()
         self.cost = set()
+        
+        #It's a feature to have high probability of invoice amount mentioned in the beginning of invoice   
+        starting_amount=re.search( r'[$₹]\s*(\d+\.?\d*)',invoiceText)
+        if starting_amount:
+            self.cost.add(float(starting_amount.group(1)))
+
+        #Check for Total Amount patterns 
         for pattern in amount_patterns:
             for amount in re.findall(pattern, invoiceText):
-                self.cost.add(amount)
+                self.cost.add(float(amount))
 
         for text in self.textList:
             self.findDates(text)
@@ -56,5 +64,4 @@ class InvoiceParser(ExtractAddress):
                 self.distance.add(float(km))
 
     def getData(self):
-        print(self.date)
         return {'Date': list(self.date), 'Distance': list(self.distance), 'travelMode': [], 'sourceAddress': self.address, 'destinationAddress': self.address, 'amount': list(self.cost)}
