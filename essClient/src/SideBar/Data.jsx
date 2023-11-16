@@ -26,8 +26,8 @@ export const SIDEBAR_DATA = [
   },
     {
     id: 3,
-    name: "invoice",
-    path: "invoice",
+    name: "SignUp/Login",
+    path: "SignUp/Login",
     icon: <InvoiceIcon />,
   },
 
