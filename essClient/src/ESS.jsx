@@ -4,7 +4,7 @@ import "./ESS.css";
 import ConveyanceForm from "./ConveyanceForm";
 import Preview from "./Preview";
 import { useState } from "react";
-import LoginSignUp from "./Components/LoginSignup";
+import LoginSignUp from "./Components/Signup";
 function ESS() {
   const [fileData, setFileData] = useState(null);
   if (fileData) {

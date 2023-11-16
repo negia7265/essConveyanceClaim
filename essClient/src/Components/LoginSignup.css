@@ -95,6 +95,9 @@
       outline: none;  
       width: 450px;
       margin-bottom: 7px;
+      justify-content: center;
+      padding: 8px;
+
 }
 .loginBox{
      display: flex;
@@ -107,6 +110,9 @@
    height:23px;
    padding-right: 53px; 
    border-radius: 4px;
+}
+.Login span{
+   padding-left: 10px;
 }
 /* .span text1{
   align-items: center;
