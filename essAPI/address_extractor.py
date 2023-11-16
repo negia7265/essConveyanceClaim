@@ -70,4 +70,3 @@ class ExtractAddress:
         if word.lower() in self.location:
           return True
      return False   
-    
