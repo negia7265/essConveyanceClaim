@@ -1,0 +1,119 @@
+/* This is the folder of login/signup  */
+.container {
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   margin:auto;
+   margin-top: 80px;
+   background-color: rgb(246, 246, 253);
+   padding-bottom: 40px;
+   width: 600px; 
+   margin-bottom: 44px;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap : 9px;
+    width: 100%;
+    margin-top: 20px;
+}
+.text{
+    font-size: 23px;
+    color: rgb(29, 17, 210);
+    font-weight: 700;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.underline{
+     width:65px;
+     height:5px;
+     background-color:rgb(27, 27, 237);
+     border-radius: 9px;
+}
+.inputs{
+     margin-top:45px;
+     display: flex;
+     flex-direction: column;
+     gap:25px;
+}
+.input{
+   display: flex;
+   align-items: center;
+   margin: auto;
+   width:480px; 
+   height:80px; 
+   border-radius: 23px;
+   background-color: rgb(203, 214, 222);
+} 
+.input img{
+   margin:0px 30px;
+   height:23px;
+   padding-right: 23px;
+}
+.input input{
+   width:50%; 
+   height:50px;
+   border:2px black solid;
+   border-radius: 6px;
+   background: transparent;
+   border:none;
+   outline: none;
+   font-size: 19px;
+}
+.forgetPassword {
+   padding-left: 50px; 
+   margin-top: 13px; 
+   font-size: 14px;
+   color: rgb(113, 113, 121); 
+   font-weight: 500;
+}
+.forgetPassword span{
+   color: rgb(7, 7, 101);
+   cursor: pointer;
+}
+.Signup{
+      width:450px;
+      height:34px;
+      border-radius: 5px; 
+      background-color: rgb(27, 27, 237);
+      color: white;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 16px;
+      border:none;
+      outline: none;
+}
+.Login{
+      display: flex;
+      align-items: center;
+      margin: auto; 
+      border-radius: 5px; 
+      background-color: rgb(27, 27, 237);
+      color: white;
+      font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 16px;
+      border:none;
+      outline: none;  
+      width: 450px;
+      margin-bottom: 7px;
+}
+.loginBox{
+     display: flex;
+     flex-direction: column;
+     margin-top: 10px;
+     margin-bottom: 13px;
+}
+.Login img{
+   margin:6px 30px;
+   height:23px;
+   padding-right: 53px; 
+   border-radius: 4px;
+}
+/* .span text1{
+  align-items: center;
+  justify-content: center; 
+  margin:3px; 
+  color: white;
+  width:50%; 
+  height:50px;
+  margin-left: 15px;
+} */
