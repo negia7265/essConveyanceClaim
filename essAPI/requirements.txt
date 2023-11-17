@@ -2,3 +2,9 @@ Flask
 Flask-CORS
 datefinder
 pdfplumber
+datefinder
+pytesseract
+nltk
+cv2
+numpy
+opencv-python
