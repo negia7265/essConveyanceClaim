@@ -52,7 +52,7 @@ def extract_date(text):
         date.add(d.strftime("%d-%m-%Y"))
     return date
 
-def extract_amount(text):
+def extract_amount(text): #it's just a dummy function (need to write algorithms to extract amount accurately)
     starting_amount=re.search( r'[$₹]\s*(\d+\.?\d*)',text)
     cost=set()
     if starting_amount:
@@ -102,5 +102,4 @@ def preprocess_img(img):
 
 
 def get_text(img):
-    return pytesseract.image_to_string(img,config='--oem 3 --psm 1')
-
+    return pytesseract.image_to_string(img,lang='eng_ruppe+eng') # config='--oem 3 --psm 1'
