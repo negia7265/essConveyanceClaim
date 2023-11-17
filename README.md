@@ -74,6 +74,13 @@ pip install customtkinter tkinter
 python test.py
 ```
 
+### [Tesseract Installation( Depends on C/C++ to run)](https://tesseract-ocr.github.io/tessdoc/Installation.html)
+```bash
+# Linux 
+sudo apt-get install tesseract-ocr -y
+# Windows 
+https://github.com/UB-Mannheim/tesseract/wiki
+```
 
 ### 🐳 [Docker Setup](https://docs.docker.com/engine/install/)
 
@@ -164,7 +171,6 @@ You may look through the GitHub [issues](https://github.com/panwar2001/essConvey
 
 ### 🚀 Pull Requests (PR)
 - Fork the repository and create a new branch from the `develop` branch.
-- For bug fixes, add new tests. We use [Pytest](https://docs.pytest.org/en/7.4.x/)  to test our code.
 - Do a PR from your new branch to our `develop` branch of the essConveyanceClaim repo.
 
 ### Contributors
