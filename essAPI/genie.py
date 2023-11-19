@@ -90,16 +90,16 @@ def getBox(img):
 
 
 def preprocess_img(img):
-    img=cv2.imdecode(np.frombuffer(img, np.uint8), cv2.IMREAD_UNCHANGED)
-    img=cv2.cvtColor(img, cv2.COLOR_RGB2GRAY) # Convert the image to gray scale 
-    img = cv2.fastNlMeansDenoising( img, None, 15, 7, 21 )  #Denoising Image 
-    img=cv2.GaussianBlur(img, (3,3),1) #blur
-    _,img = cv2.threshold(img, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV) 
-    #Image Erosion and Dilation
-    kernel =np.ones((1,1), np.uint8)
-    ero = cv2.erode(img, kernel, iterations= 1)
-    return cv2.dilate(ero, kernel, iterations=1)
+    # Decode and convert to grayscale
+    img = cv2.imdecode(np.frombuffer(img, np.uint8), cv2.IMREAD_GRAYSCALE)
+    # Denoising Image
+    img = cv2.fastNlMeansDenoising( img, None, 15, 7, 21 )   
+    # Image Binarization
+    img=cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 11, 2)
+    # Perform morphological operations (erosion and dilation)
+    kernel = np.ones((1, 1), np.uint8)
+    return cv2.morphologyEx(img, cv2.MORPH_DILATE, kernel)
 
 
 def get_text(img):
-    return pytesseract.image_to_string(img,lang='eng_ruppe+eng') # config='--oem 3 --psm 1'
+    return pytesseract.image_to_string(img,lang='eng_ruppe') # config='--oem 3 --psm 1'
