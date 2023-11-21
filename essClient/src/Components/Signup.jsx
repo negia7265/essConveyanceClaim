@@ -9,8 +9,10 @@ import password from './Assests/password.png';
 // import facebook from './Assests/facebook.jpeg';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import Button from '@mui/material/Button';
-const LoginSignUp=()=>{
+import { useNavigate } from 'react-router-dom';
+// import Button from '@mui/material/Button';
+const SignUp=()=>{
+  const navigate=useNavigate();
   return (
       <div className="container">
         <div className="header">
@@ -30,25 +32,27 @@ const LoginSignUp=()=>{
              <input type="password" placeholder="Password"/>
             </div>
           </div>
-          <div className="forgetPassword">Forgot Password? <span>Click Here!</span></div>
+          {/* <div className="forgetPassword">Forgot Password? <span>Click Here!</span></div> */}
           <div className="submit-container">
               <button className="Signup">SignUp</button> 
               <hr className="or"></hr>
-              <div className="loginBox"> 
-              <div className="Login">
+              <div className="SignUpBox">  
+              <span class="Acc">Already have an account ?</span> 
+              <button class="LoginBtn" onClick={()=>navigate("/Login")}>Login Here</button>
+              {/* <div className="Login"> */}
               {/* <img src={google} alt="" srcset="" /> */}
-              <GoogleIcon/>
-              <span  class="text1">Login With Google</span> 
-              </div> 
-              <div className="Login">
+              {/* <GoogleIcon/> */}
+              {/* <span  class="text1">Login With Google</span>  */}
+              {/* </div>  */}
+              {/* <div className="Login">
               <FacebookIcon/>
               {/* <img src={facebook} alt="" srcset="" /> */}
-              <span  class="text1">Login With Facebook</span> 
-              </div> 
+              {/* <span  class="text1">Login With Facebook</span>  */}
+              {/* </div>  */}
               </div>
           </div>
         </div>
       </div>
   )
 }
-export default LoginSignUp;
+export default SignUp;
