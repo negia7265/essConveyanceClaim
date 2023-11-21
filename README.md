@@ -186,17 +186,17 @@ You may look through the GitHub [issues](https://github.com/panwar2001/essConvey
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/negia7265">
-            <img src="https://avatars.githubusercontent.com/u/96509253?v=4" width="100;" alt="negia7265"/>
-            <br />
-            <sub><b>Ayush Negi</b></sub>
-        </a>
-    </td>
-    <td align="center">
         <a href="https://github.com/vishal1844">
             <img src="https://avatars.githubusercontent.com/u/104387858?v=4" width="100;" alt="vishal1844"/>
             <br />
             <sub><b>Vishal Jindal</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/negia7265">
+            <img src="https://avatars.githubusercontent.com/u/96509253?v=4" width="100;" alt="negia7265"/>
+            <br />
+            <sub><b>Ayush Negi</b></sub>
         </a>
     </td></tr>
 </table>
