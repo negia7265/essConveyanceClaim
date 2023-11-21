@@ -4,7 +4,8 @@ import "./ESS.css";
 import ConveyanceForm from "./ConveyanceForm";
 import Preview from "./Preview";
 import { useState } from "react";
-import LoginSignUp from "./Components/LoginSignup";
+import  Login  from "./Components/Login";
+import SignUp from "./Components/Signup";
 function ESS() {
   const [fileData, setFileData] = useState(null);
   if (fileData) {
@@ -19,7 +20,9 @@ function ESS() {
           element={<ConveyanceForm setFileData={setFileData} />}
         />
         <Route path="/preview" element={<Preview file={fileData} />} />
-        <Route path="/SignUp/Login" element={<LoginSignUp/>} />
+        {/* <Route path="/SignUp/Login" element={<SignUp/>} /> */}
+        <Route path="/Login" element={<Login/>} />
+        <Route path="/SignUp" element={<SignUp/>} />
         {/* <Route key={index} path={item.path} element={<App />} /> */}
       </Routes>
     </div>

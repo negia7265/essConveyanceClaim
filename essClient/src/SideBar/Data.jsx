@@ -26,11 +26,16 @@ export const SIDEBAR_DATA = [
   },
     {
     id: 3,
-    name: "SignUp/Login",
-    path: "SignUp/Login",
+    name: "SignUp",
+    path: "SignUp",
     icon: <InvoiceIcon />,
   },
-
+  // {
+  //   id: 4,
+  //   name: "Login",
+  //   path: "Login",
+  //   icon: <InvoiceIcon />,
+  // },
   // {
   //   id: 4,
   //   name: "calendar",
