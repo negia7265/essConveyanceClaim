@@ -32,10 +32,16 @@ export const SIDEBAR_DATA = [
   },
   // {
   //   id: 4,
-  //   name: "Login",
-  //   path: "Login",
+  //   name: "ForogotPassword",
+  //   path: "forgotpassword",
   //   icon: <InvoiceIcon />,
   // },
+  {
+    id: 4,
+    name: "RessetPassword",
+    path: "Resetting_Password",
+    icon: <InvoiceIcon />,
+  },
   // {
   //   id: 4,
   //   name: "calendar",

@@ -6,6 +6,8 @@ import Preview from "./Preview";
 import { useState } from "react";
 import  Login  from "./Components/Login";
 import SignUp from "./Components/Signup";
+import ForgetPassword from "./Components/forgotpassword";
+import RessetingPassword from "./Components/Resetting_Password";
 function ESS() {
   const [fileData, setFileData] = useState(null);
   if (fileData) {
@@ -23,6 +25,8 @@ function ESS() {
         {/* <Route path="/SignUp/Login" element={<SignUp/>} /> */}
         <Route path="/Login" element={<Login/>} />
         <Route path="/SignUp" element={<SignUp/>} />
+        <Route path="/Forgotpassword" element={<ForgetPassword/>} />
+        <Route path="/Resetting_Password" element={<RessetingPassword/>}/>
         {/* <Route key={index} path={item.path} element={<App />} /> */}
       </Routes>
     </div>

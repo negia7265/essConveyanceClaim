@@ -30,7 +30,7 @@ const Login = () => {
             <input type="password" placeholder="Password" />
           </div>
         </div>
-        <div className="forgetPassword">Forgot Password? <span>Click Here!</span></div>
+        <div className="forgetPassword">Forgot Password? <span onClick={()=>navigate("/Forgotpassword")}>Click Here!</span></div>
         <div className="submit-container">
           <button className="MainLogin">Login</button>
           <hr className="or"></hr>
