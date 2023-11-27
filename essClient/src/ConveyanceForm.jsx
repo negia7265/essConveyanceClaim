@@ -6,6 +6,7 @@ import axios from "axios";
 import FormData from "form-data";
 import { useLocation } from "react-router-dom";
 import Dropdown from "./DropDown";
+import { Document, Page } from "react-pdf";
 
 import { pdfjs } from "react-pdf";
 
@@ -64,6 +65,42 @@ const Text = styled.div`
   font-size: 15px;
 `;
 
+const Preview = ({ file }) => {
+  const [pdfFile, setPdfFile] = useState(null);
+  const [numPages, setNumPages] = useState(1);
+  const handleLoadPdf = (file) => {
+    setPdfFile(URL.createObjectURL(file));
+  };
+  useEffect(() => {
+    if (file) {
+      handleLoadPdf(file);
+    }
+  }, [file]);
+  const PrevStyle = {
+    height: "400px",
+    width: "350px",
+    backgroundColor: "rgba(128, 128, 128, 0.4)",
+    borderRadius: "7px",
+  };
+  return (
+    <div style={PrevStyle}>
+      {pdfFile ? (
+        <Document file={pdfFile}></Document>
+      ) : (
+        <p
+          style={{
+            backgroundColor: "rgba(128, 128, 128, 0.4)",
+            textAlign: "center",
+            fontSize: "30px",
+            borderRadius: "3px",
+          }}
+        >
+          No PDF selected
+        </p>
+      )}
+    </div>
+  );
+};
 
 const purposeOptions = ["Home To Office", "Office To Home"];
 
@@ -71,7 +108,7 @@ const ConveyanceForm = (props) => {
   pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const fileTypes = ["PDF","JPEG","JPG","PNG"];
+  const fileTypes = ["PDF"];
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -118,27 +155,27 @@ const ConveyanceForm = (props) => {
             ? response.data.amount[0]
             : "Select..."
         );
-        setDistanceOptions(response.data.distance);
+        setDistanceOptions(response.data.Distance);
         setDistance(
-          response.data.distance.length > 0
-            ? response.data.distance[0]
+          response.data.Distance.length > 0
+            ? response.data.Distance[0]
             : "Select..."
         );
-        setPickUpAddressOptions(response.data.address);
+        setPickUpAddressOptions(response.data.sourceAddress);
         setPickUpAddress(
-          response.data.address.length > 0
-            ? response.data.address[0]
+          response.data.sourceAddress.length > 0
+            ? response.data.sourceAddress[0]
             : "Select..."
         );
-        setDestinationAddressOptions(response.data.address);
+        setDestinationAddressOptions(response.data.destinationAddress);
         setDestinationAddress(
-          response.data.address.length > 0
-            ? response.data.address[0]
+          response.data.destinationAddress.length > 0
+            ? response.data.destinationAddress[0]
             : "Select..."
         );
-        setDateOptions(response.data.date);
+        setDateOptions(response.data.Date);
         setDate(
-          response.data.date.length > 0 ? response.data.date[0] : "Select..."
+          response.data.Date.length > 0 ? response.data.Date[0] : "Select..."
         );
         setLoading(false);
       })
