@@ -478,11 +478,12 @@ border-radius: 23px;
    flex-direction: column;
    margin:auto;
    margin-top: 80px;
-   background-color: rgb(246, 246, 253);
+   /* background-color: rgb(246, 246, 253); */
    padding-bottom: 40px;
    width: 600px; 
    margin-bottom: 44px; 
    border-radius: 23px;
+   /* padding-top: 250px; */
 }
 .container_Forgot{
    display: flex;
