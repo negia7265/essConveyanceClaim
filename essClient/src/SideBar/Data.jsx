@@ -32,9 +32,9 @@ export const SIDEBAR_DATA = [
   },
   // {
   //   id: 4,
-  //   name: "Login",
-  //   path: "Login",
-  //   icon: <InvoiceIcon />,
+  //   name: "Dashboard",
+  //   path: "Dashboard",
+  //   icon: <HomeIcon />,
   // },
   // {
   //   id: 5,

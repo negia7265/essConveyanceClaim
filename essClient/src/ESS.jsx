@@ -8,6 +8,7 @@ import LoginSignUp from "./Components/Signup";
 import  Login  from "./Components/Login";
 import  ForgotPassword  from "./Components/ForgotPassword1";
 import ResetPassword from "./Components/Resetting_Password";
+import Dashboard from "./SideBar/Sidebar/Dashboard";
 function ESS() {
   const [fileData, setFileData] = useState(null);
   if (fileData) {
@@ -19,13 +20,14 @@ function ESS() {
       <Routes>
         <Route
           path="/"
-          element={<ConveyanceForm setFileData={setFileData} />}
+          element={<LoginSignUp/>}
         />
         <Route path="/preview" element={<Preview file={fileData} />} />
-        <Route path="/SignUp/Login" element={<LoginSignUp/>} />
+        <Route path="/SignUp" element={<LoginSignUp/>} />
         <Route path="/Login" element={<Login/>} />
         <Route path="/ForgotPassword" element={<ForgotPassword/>} />
         <Route path="/ResetPassword" element={<ResetPassword/>} />
+        <Route path="/Dashboard" element={<Dashboard/>} />
 
         {/* <Route key={index} path={item.path} element={<App />} /> */}
       </Routes>
