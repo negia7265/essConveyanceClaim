@@ -17,7 +17,7 @@ import LockTwoToneIcon from '@mui/icons-material/LockTwoTone';
 const LoginSignUp=()=>{ 
   const navigate=useNavigate();
   return ( 
-      <div className="container">
+      <div className="containerd">
         <div className="header">
           <div className="text">SignUp</div>
           <div className="underline"></div>

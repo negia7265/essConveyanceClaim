@@ -1,5 +1,5 @@
 import React from 'react'
-import './LoginSignup.css'
+// import './LoginSignup.css'
 import { useNavigate } from 'react-router-dom';
 
 // import user_icon from './Assests/person.png';
@@ -15,7 +15,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 const Login = () => {
   const navigate=useNavigate();
   return (
-    <div className="container">
+    <div className="containerd">
       <div className="header">
         {/* <img className="login_img" src={login} alt="" srcset="" /> */}
         <div className="text">Login</div>

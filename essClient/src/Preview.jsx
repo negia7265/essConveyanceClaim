@@ -53,7 +53,7 @@
 // }
 import React, { useState, useEffect } from 'react';    /* last updated code*/
 import { Document, Page } from 'react-pdf';
-import "./Preview1.css";
+// import "./Preview1.css";
 
 export default function Preview(props) {
   const [pdfFile, setPdfFile] = useState(null);

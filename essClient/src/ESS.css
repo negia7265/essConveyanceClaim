@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
@@ -73,7 +73,6 @@
   margin-left: 0.5rem;
 }
 
-/* Sidebar toggle button starts */
 .outer__circle {
   position: relative;
   width: 1.5rem;
@@ -114,5 +113,4 @@
   height: 0.5rem;
   border-radius: 50%;
   background-color: #fff;
-}
-/* Sidebar toggle button ends */
+} */
