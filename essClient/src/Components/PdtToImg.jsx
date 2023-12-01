@@ -1,10 +1,10 @@
 import React from 'react'
 import "../style.css";
 import {useEffect} from 'react';
-// import PDFJS from "pdfjs-dist/build/pdf.js";
+// import PDFJS from "pdfjs-dist/build/pdf";
 // const PDFJS=window.pdfjsLib;
-// pdfjsLib.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
-const PDFJS = window.pdfjsLib;
+// PDFJS.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.min.js`;
+
 
 export default function PdtToImg() { 
   const [pdf, setPdf] = React.useState("");

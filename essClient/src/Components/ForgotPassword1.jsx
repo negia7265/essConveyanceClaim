@@ -10,21 +10,21 @@ const ForgetPassword=()=>{
   return ( 
       <div className="container_Forgot">
        <img className="forgot_pass" src={Forgot_password} alt="" srcset="" />
-        <div className="header">
-          <div className="text">Forgot Your Password ? </div>
+         <div className="header_forgot">
+          <div className="text_forgot">Forgot Your Password ? </div>
           <div className="underlineForgot"></div>
-          <span className="instruction">Confirm Your email we will send the instruction</span>
+          <span className="instruction_forgot">Confirm Your email we will send the instruction</span>
           <div className="inputs">
             <div className="input">
              <ForwardToInboxTwoToneIcon className="forgot_icon"></ForwardToInboxTwoToneIcon>
              <input type="email" placeholder="Email"/>
             </div>
           </div>
-          {/* <div className="forgetPassword">Forgot Password? <span>Click Here!</span></div> */}
-          <div className="submit-container">
+           {/* <div className="forgetPassword_forgot">Forgot Password? <span>Click Here!</span></div>  */}
+           <div className="submit-container_forgot">
               <button className="ResetCode"><span onClick={()=>navigate("/ResetPassword")}> Send Code </span></button> 
           </div>
-        </div>
+  </div> 
       </div>
   )
 }

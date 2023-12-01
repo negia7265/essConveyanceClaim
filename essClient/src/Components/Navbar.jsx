@@ -10,7 +10,7 @@ export default function Navbar() {
   return (
     <>
       <nav>
-        <div className="container">
+        <div className="container-nav">
           <div className="logo1">
             <img className="logo" src={BrandLogo} alt="Brand logo" />
             <span className="logo_heading">ESS</span>
