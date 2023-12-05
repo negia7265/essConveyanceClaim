@@ -304,3 +304,9 @@ input[type="file"]::before {
 /* .Convey{
   margin-left:378px;
 } */
+
+
+.cbody{
+  width: 60%;
+  margin-left: 30%;
+}
