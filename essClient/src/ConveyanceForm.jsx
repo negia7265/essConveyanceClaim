@@ -185,8 +185,8 @@ const ConveyanceForm = (props) => {
 
   return (
     <>
-      <Form loading={loading ? "true" : "false"} style={{marginTop:'100px'}}>
-        {/* <Label htmlFor="upload">Upload File Here...</Label>
+      {/* <Form loading={loading ? "true" : "false"}>
+        <Label htmlFor="upload">Upload File Here...</Label>
         <FileUploader
           multiple={false}
           handleChange={handleChange}
@@ -195,9 +195,9 @@ const ConveyanceForm = (props) => {
           maxSize={5}
           className="file-uploader"
         /> */}
-        <Text>
+        {/* <Text>
           {file ? `File name: ${file.name}` : "no files uploaded yet"}
-        </Text>
+        </Text> */}
         <Label htmlFor="date">Date</Label>
 
         <Dropdown options={dateOptions} setSelected={setDate} selected={date} />
@@ -235,7 +235,7 @@ const ConveyanceForm = (props) => {
         <Dropdown options={costOptions} setSelected={setCost} selected={cost} />
 
         <Button>Submit</Button>
-      </Form>
+      {/* </Form> */}
       {/* <Loader loading={loading} /> */}
     </>
   );
