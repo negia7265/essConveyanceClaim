@@ -29,6 +29,7 @@ function ESS() {
         <Route path="/ForgotPassword" element={<ForgotPassword/>} />
         <Route path="/ResetPassword" element={<ResetPassword/>} />
         <Route path="/Dashboard" element={<Dashboard/>} />
+        <Route path="/ConveyanceForm" element={<ConveyanceForm/>} />
 
         {/* <Route key={index} path={item.path} element={<App />} /> */}
       </Routes>
