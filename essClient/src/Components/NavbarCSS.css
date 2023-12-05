@@ -294,3 +294,11 @@ input[type="file"]::before {
 .container-upload input{
   margin-left: 23px;
 }
+.dispbtn{
+  margin-top:15px;
+  display: flex;
+  flex-direction: row;
+}
+/* .Convey{
+  margin-left:378px;
+} */

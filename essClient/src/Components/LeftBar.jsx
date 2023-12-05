@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./NavbarCSS.css";
+// import { useNavigate } from 'react-router-dom';
 
 import * as PDFJS from "pdfjs-dist";
 PDFJS.GlobalWorkerOptions.workerSrc =  `//unpkg.com/pdfjs-dist@${PDFJS.version}/build/pdf.worker.min.js`;
+import { useNavigate } from 'react-router-dom';
 
 export default function LeftBar() {
+  const navigate=useNavigate();
+
     const [pdf, setPdf] = React.useState("");
     const [width, setWidth] = React.useState(0);
     const [images, setImages] = React.useState([]);
@@ -145,6 +149,10 @@ export default function LeftBar() {
                             <input type="file" id="file-to-uploadx" accept="application/pdf" onChange={showPdf} />
                         </div> */}
                         <button className="preview"  onClick={showPdf}>Submit</button>
+                        <div className="dispbtn">
+                        <button className="preview"  onClick={()=>navigate("/ConveyanceForm")}>Form</button>
+                        <button className="preview"  onClick={showPdf}>Preview</button>
+                        </div>
                         <div className="scrollbox">
                             <div className="scrollbox-inner">
                                 <div className="amount">
