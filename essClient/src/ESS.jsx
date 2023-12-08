@@ -9,25 +9,27 @@ import  Login  from "./Components/Login";
 import  ForgotPassword  from "./Components/ForgotPassword1";
 import ResetPassword from "./Components/Resetting_Password";
 import Dashboard from "./SideBar/Sidebar/Dashboard";
+import LeftBar from "./Components/LeftBar";
+import Navbar from "./Components/Navbar";
 function ESS() {
   const [fileData, setFileData] = useState(null);
   if (fileData) {
     console.log(fileData);
   }
   return (
-    <div style={{ display: "flex" }}>
-      <Sidebar />
+    <div>
+      <Navbar />
       <Routes>
         <Route
           path="/"
-          element={<LoginSignUp/>}
+          element={<LeftBar/>}
         />
-        <Route path="/preview" element={<Preview file={fileData} />} />
         <Route path="/SignUp" element={<LoginSignUp/>} />
         <Route path="/Login" element={<Login/>} />
         <Route path="/ForgotPassword" element={<ForgotPassword/>} />
         <Route path="/ResetPassword" element={<ResetPassword/>} />
         <Route path="/Dashboard" element={<Dashboard/>} />
+        <Route path="/ConveyanceForm" element={<ConveyanceForm/>} />
 
         {/* <Route key={index} path={item.path} element={<App />} /> */}
       </Routes>

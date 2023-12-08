@@ -97,4 +97,3 @@ mailListener.on("mail", (mail, seqno)=>{
      sendMail(mailOptions);
   }
 });
-/*sadsad*/

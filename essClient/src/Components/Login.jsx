@@ -1,5 +1,5 @@
 import React from 'react'
-import './LoginSignup.css'
+// import './LoginSignup.css'
 import { useNavigate } from 'react-router-dom';
 
 // import user_icon from './Assests/person.png';
@@ -15,7 +15,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 const Login = () => {
   const navigate=useNavigate();
   return (
-    <div className="container">
+    <div className="containerd">
       <div className="header">
         {/* <img className="login_img" src={login} alt="" srcset="" /> */}
         <div className="text">Login</div>
@@ -36,20 +36,21 @@ const Login = () => {
             <input type="password" placeholder="Password" />
           </div>
         </div>
-        <div className="forgetPassword">Forgot Password? <span onClick={()=>navigate("/Forgotpassword")}>Click Here!</span></div>
+        <div className="forgetPassword_forgot">Forgot Password? <span onClick={()=>navigate("/Forgotpassword")}>Click Here!</span></div>
+        {/* <div className="forgetPassword">Forgot Password? <span onClick={()=>navigate("/Forgotpassword")}>Click Here!</span></div> */}
         <div className="submit-container">
           <button className="MainLogin">Login</button>
-          <hr className="or"></hr>
+          {/* <hr className="or"></hr> */}
           <div className="loginBox">
             <div className="Login">
-            <GoogleIcon className="login_icon" ></GoogleIcon>
+            <GoogleIcon className="googleIcon"/>
               {/* <img src={GoogleIcon} alt="" srcset="" />
                */}
               <span class="text1">Login With Google</span>
             </div>
             <div className="Login">
               {/* <img src={FacebookIcon} alt="" srcset="" /> */}
-              <FacebookIcon className="login_icon" ></FacebookIcon>
+              <FacebookIcon  className="googleIcon"></FacebookIcon>
               <span class="text1">Login With Facebook</span>
             </div>
           </div>

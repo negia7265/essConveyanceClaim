@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React, { useEffect, useState } from "react";
 import { FileUploader } from "react-drag-drop-files";
 import Loader from "./Loader";
+import './Components/NavbarCSS.css';
 import axios from "axios";
 import FormData from "form-data";
 import { useLocation } from "react-router-dom";
@@ -31,7 +32,7 @@ const Input = styled.input`
   border-radius: 3px;
   padding: 0 10px;
   margin-top: 8px;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 300;
   border: 1px solid black;
   color: white;
@@ -48,14 +49,14 @@ const Button = styled.button`
   border: 1px solid black;
   color: #080710;
   padding: 15px 0;
-  font-size: 18px;
+  font-size:25px;
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
 `;
 const Label = styled.label`
   color: black;
-  font-size: 15px;
+  font-size: 25px;
   font-weight: bold;
   background-color: rgba(255, 255, 255, 0.07);
 `;
@@ -184,8 +185,8 @@ const ConveyanceForm = (props) => {
 
   return (
     <>
-      <Form loading={loading ? "true" : "false"}>
-        <Label htmlFor="upload">Upload File Here...</Label>
+      <Form loading={loading ? "true" : "false"} style={{marginTop:'100px'}}>
+        {/* <Label htmlFor="upload">Upload File Here...</Label>
         <FileUploader
           multiple={false}
           handleChange={handleChange}
@@ -193,7 +194,7 @@ const ConveyanceForm = (props) => {
           types={fileTypes}
           maxSize={5}
           className="file-uploader"
-        />
+        /> */}
         <Text>
           {file ? `File name: ${file.name}` : "no files uploaded yet"}
         </Text>
@@ -235,7 +236,7 @@ const ConveyanceForm = (props) => {
 
         <Button>Submit</Button>
       </Form>
-      <Loader loading={loading} />
+      {/* <Loader loading={loading} /> */}
     </>
   );
 };

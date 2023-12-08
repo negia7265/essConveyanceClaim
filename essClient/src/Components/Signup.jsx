@@ -17,7 +17,7 @@ import LockTwoToneIcon from '@mui/icons-material/LockTwoTone';
 const LoginSignUp=()=>{ 
   const navigate=useNavigate();
   return ( 
-      <div className="container">
+      <div className="containerd">
         <div className="header">
           <div className="text">SignUp</div>
           <div className="underline"></div>
@@ -41,7 +41,7 @@ const LoginSignUp=()=>{
           {/* <div className="forgetPassword">Forgot Password? <span>Click Here!</span></div> */}
           <div className="submit-container">
               <button className="Signup">SignUp</button> 
-              <hr className="or"></hr>
+               {/* <hr className="or"></hr>  */}
               <div className="SignUpBox">  
               <span class="Acc">Already have an account ?</span> 
               <button class="LoginBtn"onClick={()=>navigate("/Login")}>Login Here</button>
