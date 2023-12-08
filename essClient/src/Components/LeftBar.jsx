@@ -11,6 +11,7 @@ export default function LeftBar() {
     const navigate = useNavigate();
 
     const [pdf, setPdf] = React.useState("");
+    const [imgList,setImgList] = React.useState([]);
     const [width, setWidth] = React.useState(0);
     const [images, setImages] = React.useState([]);
     const [height, setHeight] = React.useState(0);
@@ -48,24 +49,41 @@ export default function LeftBar() {
     async function showPdf(event) {
         document.querySelector('.form-area').style.display = 'none';
         document.querySelector('.preview-area').style.display = 'flex';
-        if(!pdfName.endsWith('.pdf')){
-            setPdfName("Please Select a File")
-            return
-        }
         try {
             setPdfRendering(true);
             const fileEle = document.querySelector('#file-to-upload')
             if (!fileEle) return
-            const file = fileEle.files[0];
-            const uri = URL.createObjectURL(file);
-            const _PDF_DOC = await PDFJS.getDocument({ url: uri }).promise;
-            setPdf(_PDF_DOC);
-            setTotalPages(_PDF_DOC.numPages);
-            setPdfRendering(false);
-            setCurrentPage(1);
-            document.getElementById("file-to-upload").value = "";
+            if(fileEle.files.length==0){
+                setPdfName("Please Select a File")
+                return
+            }
+            let file = fileEle.files[0];
+            if(file.type=='application/pdf'){
+                const uri = URL.createObjectURL(file);
+                const _PDF_DOC = await PDFJS.getDocument({ url: uri }).promise;
+                setPdf(_PDF_DOC);
+                setTotalPages(_PDF_DOC.numPages);
+                setPdfRendering(false);
+                setCurrentPage(1);
+                document.getElementById("file-to-upload").value = "";
+            }
+            else{
+                setImages([]);
+                for(let i=0;i<fileEle.files.length;i++){
+                    let file=fileEle.files[i];
+                    if(file.type!=='image/jpeg' && file.type!=='image/png'){
+                        console.log("All selected files are not images")
+                        return;
+                    }
+                    let fr = new FileReader();
+                    fr.onload = function(e){
+                        setImages(prevImages => [...prevImages, e.target.result]);
+                    }
+                    fr.readAsDataURL(file)
+                }
+            }
         } catch (error) {
-            alert(error.message+file);
+            alert(error.message);
         }
     }
 
@@ -153,8 +171,9 @@ export default function LeftBar() {
                         <input
                             type="file"
                             id="file-to-upload"
-                            accept="application/pdf"
+                            accept="application/pdf,image/png,image/jpeg"
                             hidden
+                            multiple="multiple"
                             onChange={choosePdf}
                         />
                         {/* <div class="container-upload">
